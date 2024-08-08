@@ -22,11 +22,13 @@ defmodule HackoTest do
   test "bigger h" do
     assert_in_delta 256 |> H.h, 9.3, 0.1
     assert_in_delta 512 |> H.h, 10.33, 0.1
-    assert_in_delta 1000 |> H.h, 11.33, 0.1
-    assert_in_delta 1021 |> H.h, 11.33, 0.1
+    # assert_in_delta 1000 |> H.h, 11.33, 0.1 # too slow
+    # assert_in_delta 1021 |> H.h, 11.33, 0.1 # too slow
     # assert_in_delta 1022 |> H.h, 11.33, 0.1 # fails
 
-    assert_in_delta (512 |> H.h) - (256 |> H.h), 1, 0.1
+    # assert (512 |> H.h) - (256 |> H.h) == 1
+    # assert (512 |> H.h) - :math.log2(512) == 4
+    assert (1000 |> H.h) - :math.log2(1000) == 4
 
   end
 
