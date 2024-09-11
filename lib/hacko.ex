@@ -37,6 +37,7 @@ defmodule H do
 
   def sum(l, n, foo), do: l..n |> Stream.map(foo) |> Enum.sum
 
+  defmemo h(0), do: -1
   defmemo h(1), do: 0
 
   defmemo h(n), do: 1+(1+sum(0,n-2, fn l -> Combinations.combination(n-1, l) * h(l+1) end)) / (2**(n-1)-1)
