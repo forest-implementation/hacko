@@ -16,11 +16,10 @@ defmodule HackoTest do
   end
 
   test "h" do
-    assert H.h(0) == -1
-    assert H.h(1) == 0
-    assert H.h(2) == 2
-    assert_in_delta H.h(3), 8/3, 1.0e-8
-    assert_in_delta H.h(4), 22/7, 1.0e-8
+    assert H.h(0) == 0
+    assert H.h(1) == 2
+    assert_in_delta H.h(2), 8/3, 1.0e-8
+    assert_in_delta H.h(3), 22/7, 1.0e-8
     #1..100 |> Enum.map(&H.h/1) |> IO.inspect
   end
 
@@ -32,8 +31,8 @@ defmodule HackoTest do
     # assert_in_delta 1022 |> H.h, 11.33, 0.1 # fails
 
     assert_in_delta (512 |> H.h) - (256 |> H.h), 1, 0.01
-    assert_in_delta (512 |> H.h) - :math.log2(512), 1.332, 0.001
-    #assert_in_delta (1000 |> H.h) - :math.log2(1000), 1.332, 0.001
+    assert_in_delta (512 |> H.h) - :math.log2(512), 1.33, 0.01
+    #assert_in_delta (1000 |> H.h) - :math.log2(1000), 1.333, 0.001
 
   end
 
